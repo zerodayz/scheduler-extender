@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubi
+  labels:
+    name: ubi
+spec:
+  schedulerName: "lucky-scheduler"
+  containers:
+  - name: ubi
+    image:  registry.redhat.io/ubi8/ubi-minimal
+    command: [ "/bin/bash", "-c", "--" ]
+    args: [ "while true; do sleep 30; done;" ]
