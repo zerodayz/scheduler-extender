@@ -32,7 +32,7 @@ data:
       policy:
         configMap:
           namespace: kube-system
-          name: lukcy-scheduler-policy
+          name: lucky-scheduler-policy
     leaderElection:
       leaderElect: true
       lockObjectName: lucky-scheduler
