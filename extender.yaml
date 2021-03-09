@@ -90,7 +90,7 @@ spec:
           volumeMounts:
             - name: lucky-scheduler-config
               mountPath: /lucky-scheduler
-        - name: my-scheduler-extender-ctr
+        - name: lucky-scheduler-extender-ctr
           image: quay.io/zerodayz/lucky-scheduler
           imagePullPolicy: IfNotPresent
           livenessProbe:
