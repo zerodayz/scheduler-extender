@@ -15,7 +15,7 @@ import (
 )
 
 func Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	log.Printf("Welcome!\n")
+	log.Printf("I am alive!\n")
 }
 
 func Filter(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
@@ -157,8 +157,8 @@ func prioritize(args schedulerapi.ExtenderArgs) *schedulerapi.HostPriorityList {
 func main() {
 	router := httprouter.New()
 	router.GET("/", Index)
-	router.GET("/filter", Filter)
-	router.GET("/prioritize", Prioritize)
+	router.POST("/filter", Filter)
+	router.POST("/prioritize", Prioritize)
 
 	log.Println("Welcome to the Lucky Scheduler!")
 	log.Fatal(http.ListenAndServe(":8080", router))
