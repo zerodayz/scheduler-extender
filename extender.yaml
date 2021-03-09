@@ -92,7 +92,7 @@ spec:
               mountPath: /lucky-scheduler
         - name: lucky-scheduler-extender-ctr
           image: quay.io/zerodayz/lucky-scheduler
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           livenessProbe:
             httpGet:
               path: /
