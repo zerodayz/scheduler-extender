@@ -13,7 +13,7 @@ WORKDIR /app
 RUN curl -SL https://raw.githubusercontent.com/zerodayz/scheduler-extender/master/main.go -o main.go
 
 # Build the Go app
-RUN go build -o scheduler-extender .
+RUN go build
 
 # Expose port 8080 to the outside world
 EXPOSE 8080
