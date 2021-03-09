@@ -11,9 +11,14 @@ WORKDIR /app
 
 # Copy the source from the current directory to the Working Directory inside the container
 RUN curl -SL https://raw.githubusercontent.com/zerodayz/scheduler-extender/master/main.go -o main.go
+RUN curl -SL https://raw.githubusercontent.com/zerodayz/scheduler-extender/master/go.mod -o go.mod
+RUN curl -SL https://raw.githubusercontent.com/zerodayz/scheduler-extender/master/go.sum -o go.sum
+
+# Download dependency
+RUN go mod download
 
 # Build the Go app
-RUN go build
+RUN go build -o scheduler-extender main.go
 
 # Expose port 8080 to the outside world
 EXPOSE 8080
