@@ -19,7 +19,7 @@ func Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	fmt.Fprint(w, "Welcome!\n")
 }
 
-func Filter(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+func Filter(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	var buf bytes.Buffer
 	body := io.TeeReader(r.Body, &buf)
 	var extenderArgs schedulerapi.ExtenderArgs
@@ -41,7 +41,7 @@ func Filter(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	}
 }
 
-func Prioritize(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+func Prioritize(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	var buf bytes.Buffer
 	body := io.TeeReader(r.Body, &buf)
 	var extenderArgs schedulerapi.ExtenderArgs
