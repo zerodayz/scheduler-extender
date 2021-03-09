@@ -35,6 +35,7 @@ func Filter(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	if response, err := json.Marshal(extenderFilterResult); err != nil {
 		log.Fatalln(err)
 	} else {
+		log.Print("Filter: ", string(response))
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
 		w.Write(response)
@@ -56,6 +57,7 @@ func Prioritize(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	if response, err := json.Marshal(hostPriorityList); err != nil {
 		log.Fatalln(err)
 	} else {
+		log.Print("Prioritize: ", string(response))
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
 		w.Write(response)
