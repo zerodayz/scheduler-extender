@@ -3,7 +3,6 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"io"
 	"log"
 	"math/rand"
@@ -16,11 +15,11 @@ import (
 )
 
 func Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	fmt.Fprint(w, "Welcome!\n")
+	log.Printf("Welcome!\n")
 }
 
 func Filter(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	fmt.Fprint(w, "Welcome to the Filter!\n")
+	log.Printf("Welcome to the Filter!\n")
 	var buf bytes.Buffer
 	body := io.TeeReader(r.Body, &buf)
 	var extenderArgs schedulerapi.ExtenderArgs
@@ -36,7 +35,7 @@ func Filter(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	if response, err := json.Marshal(extenderFilterResult); err != nil {
 		log.Fatalln(err)
 	} else {
-		fmt.Fprintf(w, "Filter: %v\n", string(response))
+		log.Printf("Filter: %v\n", string(response))
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
 		w.Write(response)
@@ -44,7 +43,7 @@ func Filter(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 }
 
 func Prioritize(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	fmt.Fprint(w, "Welcome to the Prioritize!\n")
+	log.Printf("Welcome to the Prioritize!\n")
 	var buf bytes.Buffer
 	body := io.TeeReader(r.Body, &buf)
 	var extenderArgs schedulerapi.ExtenderArgs
@@ -59,7 +58,7 @@ func Prioritize(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	if response, err := json.Marshal(hostPriorityList); err != nil {
 		log.Fatalln(err)
 	} else {
-		fmt.Fprintf(w, "Prioritize: %v\n", string(response))
+		log.Printf("Prioritize: %v\n", string(response))
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
 		w.Write(response)
