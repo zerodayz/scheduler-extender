@@ -85,7 +85,7 @@ spec:
           imagePullPolicy: IfNotPresent
           args:
             - kube-scheduler
-            - --config=/my-scheduler/config.yaml
+            - --config=/lucky-scheduler/config.yaml
             - -v=4
           volumeMounts:
             - name: lucky-scheduler-config
