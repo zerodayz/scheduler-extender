@@ -161,5 +161,6 @@ func main() {
 	router.GET("/filter", Filter)
 	router.GET("/prioritize", Prioritize)
 
+	log.Println("Welcome to the Lucky Scheduler!")
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
